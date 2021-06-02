@@ -21,7 +21,7 @@ iteracao = -1
 def enviar():
     global iteracao
     iteracao += 1
-    print(iteracao)
+    dados = ["Empresa"] # Reseta os dados a cada chamada.
     driver = webdriver.Firefox()
     driver.get(f"https://www.reclameaqui.com.br/empresa/{nome_empresa.get().lower()}/")
     wait = WebDriverWait(driver, 20)
@@ -41,7 +41,7 @@ def enviar():
             span.append(s.text)
         dados.append([paragrafo[:], span[:]])
         driver.close()
-        print(dados[iteracao])
+        print(dados)
         criar_planilha_com_dados(dados)
     except:
         driver.close()
