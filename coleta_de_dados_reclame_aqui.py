@@ -19,8 +19,8 @@ def enviar():
     dados = ["Empresa"] # Reseta os dados a cada chamada.
     paragrafo = []
     span = []
-    
-    driver = webdriver.Firefox()
+
+    driver = webdriver.Firefox(executable_path=r"./geckodriver.exe")
     driver.get(f"https://www.reclameaqui.com.br/empresa/{nome_empresa.get().lower()}/")
     wait = WebDriverWait(driver, 20)
     try:
@@ -57,13 +57,10 @@ def criar_planilha_com_dados(lista):
     column = 0 + iteracao
 
     for item, value in planilha:
-        print(f"Item: {item} | Value: {value}")
         if iteracao == 0:
             worksheet.write(row, column, item)
         worksheet.write(row, column + 1, value)
         row += 1
-    print("FIM")
-    
 
 lb_empresa = Label(janela, text="Digite o nome da empresa: ")
 lb_empresa.place(x=0, y=0)
@@ -79,5 +76,4 @@ janela.geometry("300x100")
 janela.resizable(False, False)
 janela.mainloop()
 
-print("Saiu")
 workbook.close()
