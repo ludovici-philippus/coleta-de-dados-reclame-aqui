@@ -20,7 +20,7 @@ def enviar():
     paragrafo = []
     span = []
 
-    driver = webdriver.Firefox(executable_path=r"./geckodriver.exe")
+    driver = webdriver.Firefox(executable_path=r".\geckodriver.exe")
     driver.get(f"https://www.reclameaqui.com.br/empresa/{nome_empresa.get().lower()}/")
     wait = WebDriverWait(driver, 20)
     try:
